@@ -1,3 +1,80 @@
+
+
+# claude-ads - 面向12大广告平台的Claude智能投放审计系统
+
+一款基于Claude AI的付费媒体运营工具，自动化审计Google、Meta等主流广告平台账户，提供数据驱动的优化建议与安全变更控制
+
+## （一）项目简介
+
+**核心定位**  
+专为数字营销团队打造的智能广告审计系统，通过Claude AI实现：  
+- 跨平台账户健康扫描（覆盖12个主流广告平台）  
+- 数据支撑的确定性评分体系  
+- 版本化JSON审计报告生成  
+- 能力分级的安全变更控制  
+
+**解决痛点**  
+- 人工审计效率低且易遗漏关键指标  
+- 多平台账户管理标准不统一  
+- 高风险操作缺乏智能拦截机制  
+
+**核心优势**  
+- 唯一支持Claude原生集成的广告审计方案  
+- 平台级策略库持续更新  
+- 变更前的自动能力验证  
+
+## （二）环境前置要求
+
+- Python 3.8+  
+- Claude API有效访问权限  
+- 各广告平台的开发者API权限  
+- 推荐配置：4核CPU/8GB内存（处理多账户审计时）  
+
+## （三）快速开始
+
+1. 克隆仓库  
+```bash
+git clone https://github.com/AgriciDaniel/claude-ads.git
+cd claude-ads
+```
+
+2. 安装依赖  
+```bash
+pip install -r requirements.txt
+```
+
+3. 配置环境变量  
+```bash
+echo 'CLAUDE_API_KEY=your_api_key' > .env
+```
+
+## （四）基础使用示例
+
+执行基础账户审计：  
+```python
+from auditor import PlatformAuditor
+
+auditor = PlatformAuditor(platform="google_ads")
+report = auditor.generate_report(account_id="123-456-7890")
+report.save("audit_v1.json") 
+```
+
+输出结果包含：  
+- 账户结构评分（0-100）  
+- 违规策略标记  
+- 预算分配优化建议  
+- 风险操作历史记录  
+
+## （五）开源许可证
+
+MIT License  
+允许商业用途，需保留原始版权声明  
+```
+
+---
+
+
+
 <p align="center">
   <img src="assets/banner.svg" alt="Claude Ads, Claude-first paid-media operations across twelve advertising platforms" width="100%">
 </p>
