@@ -1,92 +1,248 @@
-# claude-ads-cn
+<p align="center">
+  <img src="assets/banner.svg" alt="Claude Ads, Claude-first paid-media operations across twelve advertising platforms" width="100%">
+</p>
 
+# Claude Ads
 
+Claude-first, portable paid-media operations for agencies, consultants, and
+in-house performance teams.
 
-## Getting started
+Claude Ads turns authorized exports or account reads into source-grounded
+audits, plans, creative workflows, experiments, monitoring, and reports. It is
+read-only by default. Live changes stay disabled until the exact platform and
+operation pass approval, idempotency, verification, audit, and rollback gates.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+> [!NOTE]
+> Claude Ads ships from two homes: the **public release** at
+> [`AgriciDaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads)
+> (MIT, no membership required) and the **community mirror** at
+> `AI-Marketing-Hub/claude-ads`, where
+> [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro) members
+> get early access and direct collaboration.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+<p align="center">
+  <img src="assets/diagrams/how-it-works.svg" alt="Validated inputs flow through bounded workers into schema-valid findings and deterministic reports" width="100%">
+</p>
 
-## Add your files
+## What it does
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- Audits paid-media accounts with dated evidence and explicit confidence.
+- Plans campaigns, channels, budgets, measurement, and experiments.
+- Creates copy, image, video, and product-photo briefs and assets.
+- Monitors pacing, delivery, tracking, fatigue, policy, and performance.
+- Produces versioned JSON, then renders Markdown, HTML, and optional PDF.
+- Drafts safe account changes without applying them by default.
+- Reports missing data, stale sources, contradictions, and partial failures.
 
-```
-cd existing_repo
-git remote add origin https://www.gitcc.com/yuejie/claude-ads-cn.git
-git branch -M main
-git push -uf origin main
-```
+## Platforms
 
-## Integrate with your tools
+<p align="center">
+  <img src="assets/diagrams/platform-coverage.svg" alt="Twelve first-class paid-advertising platform surfaces" width="100%">
+</p>
 
-- [ ] [Set up project integrations](https://www.gitcc.com/yuejie/claude-ads-cn/-/settings/integrations)
+| Segment | Platforms |
+| --- | --- |
+| Search, video, and social | Google Ads, Meta Ads, YouTube Ads, LinkedIn Ads, TikTok Ads, Microsoft Advertising, Reddit Ads, Snapchat Ads, X Ads |
+| Commerce and retail media | Apple Ads, Amazon Ads, Pinterest Ads |
 
-## Collaborate with your team
+Each platform has a focused skill, audit worker, control reference, capability
+declaration, and testable routing surface. The
+[capability manifest](control-plane/manifests/capability-manifest.json) is the
+authoritative record for live reads and writes.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## Commands
 
-## Test and Deploy
+Standalone installs use `/ads`. Claude Code plugins are namespaced and use
+`/claude-ads:ads`. Both load the same `ads/SKILL.md` contract.
 
-Use the built-in continuous integration in GitLab.
+| Command | Outcome |
+| --- | --- |
+| `/ads setup` | Create the client, account, KPI, privacy, and guardrail profile |
+| `/ads audit [all\|platform\|scope]` | Run a complete or scoped evidence-backed audit |
+| `/ads plan` | Build channel, campaign, budget, competitor, and measurement plans |
+| `/ads create` | Produce copy, image, video, or product-photo assets |
+| `/ads launch --draft` | Draft a campaign mutation plan without changing the account |
+| `/ads monitor` | Review pacing, delivery, tracking, fatigue, policy, and performance |
+| `/ads optimize --draft` | Draft evidence-backed optimization changes |
+| `/ads experiment` | Design or read out a controlled test |
+| `/ads report` | Render a validated JSON run bundle |
+| `/ads research refresh` | Refresh platform, policy, API, benchmark, and ecosystem evidence |
+| `/ads validate` | Validate contracts, runs, capabilities, maturity, or release readiness |
+| `/ads status`, `/ads next` | Show current status and the highest-priority blocker |
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Platform shortcuts such as `/ads google`, `/ads meta`, `/ads amazon`, and
+`/ads reddit` route to the matching platform audit.
 
-***
+## Demo
 
-# Editing this README
+<p align="center">
+  <img src="assets/demo.gif" alt="Claude Ads command discovery inside Claude Code" width="800">
+</p>
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The GIF shows the original command-discovery experience. The v2 command table
+above and the platform table are current and authoritative.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Claude Code is the canonical runtime. Codex, Gemini, Cursor, Windsurf, Goose,
+and compatible Agent Skills hosts can consume the same skill files where their
+runtime supports them.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Prefer the host's native plugin flow or a tagged release archive with a verified
+SHA-256 checksum. Never pipe a remote installer directly to a shell.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+For Claude Code, the native plugin flow is:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```text
+/plugin marketplace add AgriciDaniel/claude-ads
+/plugin install claude-ads@ai-marketing-hub-claude-ads
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Or install from a local clone of the public repository:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+```bash
+git clone https://github.com/AgriciDaniel/claude-ads.git
+cd claude-ads
+bash install.sh --source=local
+```
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Select another standalone host explicitly:
+
+```bash
+bash install.sh --target=codex --source=local
+bash install.sh --target=gemini --source=local --no-deps
+```
+
+PowerShell uses the same managed ownership model:
+
+```powershell
+git clone https://github.com/AgriciDaniel/claude-ads.git
+Set-Location claude-ads
+.\install.ps1 -Source local
+```
+
+Managed dependencies support CPython 3.11 and 3.12 on the declared Linux,
+macOS, and Windows wheel matrix. Unsupported interpreters fail before the
+destination changes. Use `--no-deps` or `-NoDeps` for a skill-only install.
+
+Browser capture requires an operator-installed Playwright browser payload. PDF
+rendering requires the host's WeasyPrint and Pango system libraries. These are
+documented in the
+[external runtime dependency manifest](control-plane/manifests/external-runtime-dependencies.json).
+
+Uninstall only manifest-owned files:
+
+```bash
+bash uninstall.sh --target=claude
+```
+
+The PowerShell equivalent is `uninstall.ps1`.
+
+## Architecture
+
+<p align="center">
+  <img src="assets/diagrams/architecture.svg" alt="One conductor dispatches platform and cross-platform workers, then validates and renders a canonical JSON bundle" width="100%">
+</p>
+
+One conductor owns scope, policy, aggregation, and final artifacts. Workers
+analyze bounded slices and return schema-valid findings. Required-worker failure
+makes the run partial. It is never silently presented as a complete audit.
+
+The canonical result is versioned JSON. Markdown, HTML, and PDF are renderings
+of the same validated run bundle.
+
+## Scoring and evidence
+
+<p align="center">
+  <img src="assets/diagrams/ads-health-score.svg" alt="Health and evidence coverage remain separate; scoring requires an approved platform profile" width="100%">
+</p>
+
+Controls use `pass`, `fail`, `unknown`, or `not_applicable`.
+
+- Health, evidence coverage, regulatory exposure, and opportunities stay separate.
+- Unknown controls reduce evidence coverage without changing known health.
+- Coverage of 80% or more is graded, 60 to 79% is provisional, and below 60%
+  is insufficient evidence.
+- Optional, beta, premium, unavailable, and ineligible features stay unscored.
+- A disabled or unapproved platform profile produces no health score.
+- A failed platform is excluded from portfolio scoring and makes the run partial.
+
+See the [scoring reference](ads/references/scoring-system.md) and production
+implementation in `claude_ads_core/scoring.py`.
+
+## Account safety
+
+All adapters are read-only by default. Applying a change requires:
+
+1. A tested and enabled capability for the exact operation.
+2. Explicit account and object IDs.
+3. A human-readable before and after diff with blast radius.
+4. Owner approval within account-defined ceilings.
+5. An idempotency key, audit destination, rollback, and verification window.
+6. Verification that remote state still matches the mutation precondition.
+
+Missing ceilings mean no write. Permanent deletion is not supported in v2.
+Credentials belong in environment variables, an OS keychain, or an approved
+secret manager. They never belong in the repository, profiles, reports, or logs.
+
+## Evidence and release controls
+
+The public-safe `control-plane/` records product boundaries, dated sources,
+claims, capabilities, safety rules, privacy rules, ecosystem decisions, and
+release requirements.
+
+- No source means no current platform claim.
+- No implementation, fixture, and test means no capability claim.
+- No approval and rollback means no account mutation.
+- No independent verification means no release.
+
+See the [release requirements](control-plane/RELEASE_REQUIREMENTS.md) and
+[publishing policy](control-plane/PUBLISHING_POLICY.md).
+
+## Development
+
+Create a virtual environment and run the complete suite:
+
+```bash
+python3.12 -m venv .venv
+.venv/bin/python -m pip install --no-deps -e .
+.venv/bin/python -m pip install --require-hashes --only-binary=:all: -r requirements.lock
+.venv/bin/python -m pip install --require-hashes --only-binary=:all: -r requirements-dev.lock
+.venv/bin/python -m pip check
+.venv/bin/python -m pytest -q
+```
+
+Useful focused checks:
+
+```bash
+python -m claude_ads_core --version
+python -m claude_ads_core validate finding path/to/finding.json
+bash -n install.sh uninstall.sh
+```
+
+## Repository map
+
+```text
+ads/                  main skill, interface metadata, and shared references
+skills/               platform and lifecycle skills
+agents/               platform, cross-platform, research, and verifier workers
+claude_ads_core/      typed contracts, adapters, validation, and scoring
+control-plane/        evidence, capability, safety, maturity, and release state
+scripts/              browser, creative, reporting, and release helpers
+evals/                routing and behavioral evaluation cases
+tests/                deterministic, security, installer, and adapter tests
+```
+
+## Privacy
+
+Client data, raw private research, captured prompts, credentials, account
+exports, and agent transcripts must never enter Git history, reports, or release
+archives. Keep credentials in environment variables, an OS keychain, or an
+approved secret manager.
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Original Claude Ads code and documentation are available under the MIT License.
+Third-party APIs, trademarks, documentation, and cited artifacts remain subject
+to their own terms. Review the [source ledger](control-plane/manifests/source-ledger.json)
+and [third-party notices](THIRD_PARTY_NOTICES.md) before importing external work.
