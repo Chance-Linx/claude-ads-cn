@@ -1,3 +1,3 @@
-# All PRs automatically request review from the maintainer.
-# Add per-path entries below if you split ownership in future waves.
-*    @AgriciDaniel
+# All PRs automatically request review from the fork maintainer.
+# Add per-path entries below if ownership is split in future waves.
+*    @Chance-Linx

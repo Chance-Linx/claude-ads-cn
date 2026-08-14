@@ -1,75 +1,53 @@
+# Claude Ads CN
 
+Claude Ads CN 是基于
+[`AgriciDaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads)
+的中文本地化、Codex/Claude Code 多 Agent 技能适配和维护分发仓库。
 
-# claude-ads - 面向12大广告平台的Claude智能投放审计系统
+本仓库的目标不是重新包装上游作者的成果，而是把 Claude Ads 的广告审计、
+投放规划、素材生成、监控、实验和报告工作流，整理成更适合中文维护者、
+中国出海团队和 Codex/Agent Skills 使用场景的公开版本。
 
-一款基于Claude AI的付费媒体运营工具，自动化审计Google、Meta等主流广告平台账户，提供数据驱动的优化建议与安全变更控制
+## 本仓库维护范围
 
-## （一）项目简介
+- 中文 README、使用说明、申请说明和运行边界说明。
+- 面向 Codex、Claude Code、Gemini、Cursor 等 Agent Skills 主机的安装和使用提示。
+- 对安装脚本、依赖锁、测试、报告输出和安全边界做公开可复核的维护。
+- 保留上游 MIT License、版权声明、第三方声明和来源记录。
+- 不声称本仓库拥有上游 GitHub stars、forks 或全部贡献历史。
 
-**核心定位**  
-专为数字营销团队打造的智能广告审计系统，通过Claude AI实现：  
-- 跨平台账户健康扫描（覆盖12个主流广告平台）  
-- 数据支撑的确定性评分体系  
-- 版本化JSON审计报告生成  
-- 能力分级的安全变更控制  
+## 与上游的关系
 
-**解决痛点**  
-- 人工审计效率低且易遗漏关键指标  
-- 多平台账户管理标准不统一  
-- 高风险操作缺乏智能拦截机制  
+上游项目：[`AgriciDaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads)
 
-**核心优势**  
-- 唯一支持Claude原生集成的广告审计方案  
-- 平台级策略库持续更新  
-- 变更前的自动能力验证  
+本仓库来自公开 MIT 许可代码，保留原始版权声明。后续中文本地化、文档、
+Codex 适配和维护记录会在本仓库公开提交。详见
+[FORK_NOTICE.md](FORK_NOTICE.md)。
 
-## （二）环境前置要求
+## 快速开始
 
-- Python 3.8+  
-- Claude API有效访问权限  
-- 各广告平台的开发者API权限  
-- 推荐配置：4核CPU/8GB内存（处理多账户审计时）  
-
-## （三）快速开始
-
-1. 克隆仓库  
 ```bash
-git clone https://github.com/AgriciDaniel/claude-ads.git
-cd claude-ads
+git clone https://github.com/Chance-Linx/claude-ads-cn.git
+cd claude-ads-cn
+python3.12 -m venv .venv
+.venv/bin/python -m pip install --no-deps -e .
+.venv/bin/python -m pip install --require-hashes --only-binary=:all: -r requirements.lock
+.venv/bin/python -m pytest -q
 ```
 
-2. 安装依赖  
+基础命令：
+
 ```bash
-pip install -r requirements.txt
+python -m claude_ads_core --version
+python -m claude_ads_core --help
+python -m claude_ads_core validate finding path/to/finding.json
 ```
 
-3. 配置环境变量  
-```bash
-echo 'CLAUDE_API_KEY=your_api_key' > .env
-```
+## 开源许可
 
-## （四）基础使用示例
-
-执行基础账户审计：  
-```python
-from auditor import PlatformAuditor
-
-auditor = PlatformAuditor(platform="google_ads")
-report = auditor.generate_report(account_id="123-456-7890")
-report.save("audit_v1.json") 
-```
-
-输出结果包含：  
-- 账户结构评分（0-100）  
-- 违规策略标记  
-- 预算分配优化建议  
-- 风险操作历史记录  
-
-## （五）开源许可证
-
-MIT License  
-允许商业用途，需保留原始版权声明  
-```
+本仓库继续采用 MIT License。第三方广告平台、API、商标、文档和引用材料
+分别受其自身条款约束。不要把客户账号导出、凭证、Prompt 记录、原始调研
+或私有投放数据提交到 Git 历史。
 
 ---
 
@@ -90,12 +68,13 @@ read-only by default. Live changes stay disabled until the exact platform and
 operation pass approval, idempotency, verification, audit, and rollback gates.
 
 > [!NOTE]
-> Claude Ads ships from two homes: the **public release** at
+> The original Claude Ads project ships from two homes: the **public release** at
 > [`AgriciDaniel/claude-ads`](https://github.com/AgriciDaniel/claude-ads)
 > (MIT, no membership required) and the **community mirror** at
 > `AI-Marketing-Hub/claude-ads`, where
 > [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro) members
-> get early access and direct collaboration.
+> get early access and direct collaboration. This `claude-ads-cn` repository is
+> an independent Chinese localization and maintenance fork.
 
 <p align="center">
   <img src="assets/diagrams/how-it-works.svg" alt="Validated inputs flow through bounded workers into schema-valid findings and deterministic reports" width="100%">
@@ -168,18 +147,18 @@ runtime supports them.
 Prefer the host's native plugin flow or a tagged release archive with a verified
 SHA-256 checksum. Never pipe a remote installer directly to a shell.
 
-For Claude Code, the native plugin flow is:
+For the original Claude Code plugin, the native plugin flow is:
 
 ```text
 /plugin marketplace add AgriciDaniel/claude-ads
 /plugin install claude-ads@ai-marketing-hub-claude-ads
 ```
 
-Or install from a local clone of the public repository:
+Or install from this Chinese maintenance fork:
 
 ```bash
-git clone https://github.com/AgriciDaniel/claude-ads.git
-cd claude-ads
+git clone https://github.com/Chance-Linx/claude-ads-cn.git
+cd claude-ads-cn
 bash install.sh --source=local
 ```
 
@@ -193,8 +172,8 @@ bash install.sh --target=gemini --source=local --no-deps
 PowerShell uses the same managed ownership model:
 
 ```powershell
-git clone https://github.com/AgriciDaniel/claude-ads.git
-Set-Location claude-ads
+git clone https://github.com/Chance-Linx/claude-ads-cn.git
+Set-Location claude-ads-cn
 .\install.ps1 -Source local
 ```
 

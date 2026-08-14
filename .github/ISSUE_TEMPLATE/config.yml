@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Feature Requests & General Questions
+  - name: Upstream Feature Requests & General Questions
     url: https://github.com/AgriciDaniel/claude-ads/discussions
-    about: Share ideas, ask questions, and discuss improvements in Discussions
+    about: Share original Claude Ads ideas, questions, and upstream improvements.
+  - name: Claude Ads CN repository
+    url: https://github.com/Chance-Linx/claude-ads-cn
+    about: Use this repository for Chinese localization and fork-specific maintenance.

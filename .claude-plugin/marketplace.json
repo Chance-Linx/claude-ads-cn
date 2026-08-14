@@ -1,7 +1,7 @@
 {
   "name": "ai-marketing-hub-claude-ads",
   "owner": {
-    "name": "AgriciDaniel"
+    "name": "AgriciDaniel; Chinese fork maintained by Chance-Linx"
   },
   "metadata": {
     "description": "Claude-first, portable paid-media operations across 12 advertising platforms.",
@@ -14,10 +14,10 @@
       "description": "Claude-first, portable paid-media operations across 12 advertising platforms with source-grounded audits, deterministic scoring, lifecycle workflows, versioned JSON reports, and capability-gated account changes.",
       "version": "2.0.1",
       "author": {
-        "name": "AgriciDaniel"
+        "name": "AgriciDaniel; Chinese fork maintained by Chance-Linx"
       },
       "homepage": "https://agricidaniel.com/blog/claude-code-ad-agency",
-      "repository": "https://github.com/AgriciDaniel/claude-ads",
+      "repository": "https://github.com/Chance-Linx/claude-ads-cn",
       "license": "MIT",
       "category": "marketing",
       "tags": [

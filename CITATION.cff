@@ -1,18 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this software in your work, please cite it using the metadata below."
 type: software
-title: "Claude Ads"
+title: "Claude Ads CN"
 abstract: >
-  Claude-first, portable paid-media operations across Google, Meta, YouTube,
-  LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and
-  X. Provides source-grounded audits, deterministic scoring, versioned JSON
-  contracts, lifecycle workflows, client reports, and capability-gated account
-  changes for professional operators.
+  Chinese localization and maintenance fork of Claude Ads, a Claude-first,
+  portable paid-media operations system across Google, Meta, YouTube, LinkedIn,
+  TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X.
 authors:
   - alias: AgriciDaniel
     name-particle: ""
-repository-code: "https://github.com/AgriciDaniel/claude-ads"
-url: "https://github.com/AgriciDaniel/claude-ads"
+  - alias: Chance-Linx
+    name-particle: ""
+repository-code: "https://github.com/Chance-Linx/claude-ads-cn"
+url: "https://github.com/Chance-Linx/claude-ads-cn"
 license: MIT
 version: "2.0.1"
 date-released: "2026-07-13"

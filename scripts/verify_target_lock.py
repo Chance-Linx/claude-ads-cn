@@ -49,6 +49,18 @@ def native_target_id(profile: str) -> str:
     return f"{profile}-{target}-cp{sys.version_info.major}{sys.version_info.minor}"
 
 
+def platform_summary() -> str:
+    return "-".join(
+        part
+        for part in (
+            platform.system(),
+            platform.release(),
+            platform.machine(),
+        )
+        if part
+    )
+
+
 def verify(root: Path, profile: str, pip_report: Path, wheel_dir: Path, output: Path) -> None:
     inventory = release._load_dependency_inventory(root)
     target_id = native_target_id(profile)
@@ -104,7 +116,7 @@ def verify(root: Path, profile: str, pip_report: Path, wheel_dir: Path, output: 
         "environment": {
             "implementation": platform.python_implementation(),
             "python_version": f"{sys.version_info.major}.{sys.version_info.minor}",
-            "platform": platform.platform(),
+            "platform": platform_summary(),
             "machine": platform.machine(),
             "libc": list(platform.libc_ver()),
             "runner": {name: os.environ[name] for name in ("ImageOS", "ImageVersion", "RUNNER_OS", "RUNNER_ARCH") if name in os.environ},
