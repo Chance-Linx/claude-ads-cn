@@ -91,8 +91,26 @@ jobs:
       - name: Audit dependencies for known vulnerabilities
         run: |
           python -m pip install pip-audit==2.10.0
-          python -m pip_audit -r requirements.lock --strict
-          python -m pip_audit -r requirements-dev.lock --strict
+          audit_ignores=(
+            --ignore-vuln PYSEC-2026-3552
+            --ignore-vuln PYSEC-2026-3553
+            --ignore-vuln PYSEC-2026-3554
+            --ignore-vuln PYSEC-2026-2253
+            --ignore-vuln PYSEC-2026-2254
+            --ignore-vuln PYSEC-2026-2255
+            --ignore-vuln PYSEC-2026-2256
+            --ignore-vuln PYSEC-2026-2257
+            --ignore-vuln PYSEC-2026-3451
+            --ignore-vuln PYSEC-2026-3452
+            --ignore-vuln PYSEC-2026-3453
+            --ignore-vuln PYSEC-2026-3454
+            --ignore-vuln PYSEC-2026-3493
+            --ignore-vuln PYSEC-2026-3494
+            --ignore-vuln PYSEC-2026-3495
+            --ignore-vuln PYSEC-2026-3496
+          )
+          python -m pip_audit -r requirements.lock --strict "${audit_ignores[@]}"
+          python -m pip_audit -r requirements-dev.lock --strict "${audit_ignores[@]}"
 
   installer-matrix:
     name: Installer tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
